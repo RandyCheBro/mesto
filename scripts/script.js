@@ -13,10 +13,17 @@ function closePopup() {
 
 popupOpen.addEventListener("click", openPopup);
 popupClose.addEventListener("click", closePopup);
-popupCloseOutside.addEventListener("click", closePopup);
-popupCloseOutside.addEventListener("click", function(event) {
+popupCloseOutside.addEventListener("click", function (event) {
   console.log("кликнули по:", event.target);
   if (event.target === event.currentTarget) {
     closePopup();
   }
 });
+
+const formElement = document.querySelector(".popup__form");
+const nameInput = document.querySelector(".popup__name");
+const jobInput = document.querySelector(".popup__job");
+
+function formSubmitHandler () {
+  evt.preventDefault();
+}
