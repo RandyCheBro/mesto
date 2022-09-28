@@ -1,0 +1,19 @@
+.element__like {
+  background-image: url(/sprint-4-images/like.png);
+  width: 22px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: #ffffff;
+  transition: opacity 0.3 linear;
+  cursor: pointer;
+}
+
+.element__like:hover {
+  opacity: 0.5;
+}
+
+.element__like:active {
+  background-image: url(/sprint-4-images/active-like.png);
+}
