@@ -1,6 +1,6 @@
 .profile__edit-button {
   grid-area: edit-button;
-  background-image: url(./sprint-4-images/Vector.svg);
+  background-image: url(../../../sprint-4-images/Vector.svg);
   width: 24px;
   height: 24px;
   background-color: #000000;
