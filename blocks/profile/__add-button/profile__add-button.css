@@ -4,8 +4,8 @@
   border-radius: 2px;
   width: 150px;
   height: 50px;
-  background-color: #000000;
-  background-image: url(../../../sprint-4-images/Vector2.svg);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../images/Vector2.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;

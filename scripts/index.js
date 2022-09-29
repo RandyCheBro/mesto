@@ -1,11 +1,10 @@
 const popupOpen = document.querySelector('.profile__edit-button');
 const popupEle = document.querySelector('.popup');
 const popupClose = document.querySelector('.popup__close');
-const popupCloseOutside = document.querySelector('.popup__container');
 
 const formElement = document.querySelector('.popup__form');
-const nameInput = document.querySelector('.popup__name');
-const jobInput = document.querySelector('.popup__job');
+const formElementName = document.querySelector('.popup__form_input-name');
+const formElementJob = document.querySelector('.popup__form_input-job');
 const formSubmit = document.querySelector('.popup__submit');
 const popupTitle = document.querySelector('.profile__name');
 const popupSubTitle = document.querySelector('.profile__job');
@@ -13,6 +12,8 @@ const popupSubTitle = document.querySelector('.profile__job');
 
 function openPopup() {
   popupEle.classList.add('popup_is-opened');
+  formElementName.value = popupTitle.textContent;
+  formElementJob.value = popupSubTitle.textContent;
 }
 
 function closePopup() {
@@ -22,17 +23,17 @@ function closePopup() {
 
 function formSubmitHandler(event) {
   event.preventDefault();
-  popupTitle.textContent = nameInput.value;
-  popupSubTitle.textContent = jobInput.value;
+  popupTitle.textContent = formElementName.value;
+  popupSubTitle.textContent = formElementJob.value;
   closePopup();
 }
 
 popupOpen.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
-popupCloseOutside.addEventListener('click', function (event) {
+/*popupEle.addEventListener('click', function (event) {
   console.log('кликнули по:', event.target);
   if (event.target === event.currentTarget) {
     closePopup();
   }
-});
+});*/
 formElement.addEventListener('submit', formSubmitHandler);
