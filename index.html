@@ -1,96 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
-</head>
-<body class="page">
-  <div class="page__container">
-    <header class="header">
-      <img class="header__logo" src="./sprint-4-images/logo.png" alt="логотип">
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="page">
+    <div class="page__container">
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип" />
+      </header>
 
-    <main class="content">
+      <article class="content">
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="./images/Avatar.png"
+            alt="фото Жак Ив Кусто"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <p class="profile__job">Исследователь океана</p>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="open-editing"
+            ></button>
+          </div>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="open-adding"
+          ></button>
+        </section>
 
-      <section class="profile">
-        <img class="profile__avatar" src="./sprint-4-images/Avatar.png" alt="фото Жак Ив Кусто">
-        <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__job">Исследователь океана</p>
-          <button class="profile__edit-button" type="button"></button>
-        </div>
-        <button class="profile__add-button" type="button"></button>
-      </section>
+        <section class="elements">
+          <ul class="elements__table">
+            <li class="element">
+              <img
+                class="element__image"
+                src="./images/kirill-pershin-1088404-карачаево.png"
+                alt="карачаевск"
+              />
+              <div class="element__description">
+                <h2 class="element__title">Карачаевск</h2>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                class="element__image"
+                src="./images/гораэльбрус.png"
+                alt="эльбрус"
+              />
+              <div class="element__description">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                class="element__image"
+                src="./images/домбай.png"
+                alt="домбай"
+              />
+              <div class="element__description">
+                <h2 class="element__title">Домбай</h2>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                class="element__image"
+                src="./images/гораэльбрус.png"
+                alt="эльбрус"
+              />
+              <div class="element__description">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                class="element__image"
+                src="./images/домбай.png"
+                alt="домбай"
+              />
+              <div class="element__description">
+                <h2 class="element__title">Домбай</h2>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                class="element__image"
+                src="./images/kirill-pershin-1088404-карачаево.png"
+                alt="карачаевск"
+              />
+              <div class="element__description">
+                <h2 class="element__title">Карачаево-Черкессия</h2>
+                <button class="element__like" type="button"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
 
-      <section class="elements">
-        <ul class="elements__table">
-          <li class="element">
-            <img class="element__image" src="./sprint-4-images/kirill-pershin-1088404-карачаево.png" alt="карачаевск">
-            <div class="element__description">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./sprint-4-images/гораэльбрус.png" alt="эльбрус">
-            <div class="element__description">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./sprint-4-images/домбай.png" alt="домбай">
-            <div class="element__description">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./sprint-4-images/гораэльбрус.png" alt="эльбрус">
-            <div class="element__description">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./sprint-4-images/домбай.png" alt="домбай">
-            <div class="element__description">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./sprint-4-images/kirill-pershin-1088404-карачаево.png" alt="карачаевск">
-            <div class="element__description">
-              <h2 class="element__title">Карачаево-Черкессия</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-        </ul>
-      </section>
+      <footer class="footer">
+        <p class="footer__text">&copy; 2020 Mesto Russia</p>
+      </footer>
 
-    </main>
-
-    <footer class="footer">
-      <p class="footer__text">&copy; 2020 Mesto Russia</p>
-    </footer>
-
-    <div class="popup">
-      <div class="popup__container">
-        <div class="popup__body">
+      <div class="popup">
+        <div class="popup__container">
           <h3 class="popup__title">Редактировать профиль</h3>
           <form action="#" class="popup__form" name="form" method="post">
-            <input type="text" class="popup__name popup__input" placeholder="Имя" required>
-            <input type="text" class="popup__job popup__input" placeholder="Профессия" required>
-            <button type="submit" class="popup__submit" id="submit">Сохранить</button>
+            <input
+              name="input-name"
+              type="text"
+              class="popup__form_input-name popup__input"
+              placeholder="Имя"
+              required
+            />
+            <input
+              name="input-job"
+              type="text"
+              class="popup__form_input-job popup__input"
+              placeholder="Профессия"
+              required
+            />
+            <button type="submit" class="popup__submit" id="submit">
+              Сохранить
+            </button>
           </form>
-          <div class="popup__close"></div>
+          <button
+            class="popup__close"
+            type="button"
+            aria-label="close"
+          ></button>
         </div>
       </div>
     </div>
-  </div>
-    <script src="./scripts/script.js"></script>
-</body>
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>
