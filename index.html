@@ -14,15 +14,15 @@
       <img class="header__logo" src="./images/logo.svg" alt="логотип" />
     </header>
 
-    <article class="content">
+    <main class="content">
       <section class="profile">
         <img class="profile__avatar" src="./images/Avatar.png" alt="фото Жак Ив Кусто" />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__job">Исследователь океана</p>
-          <button class="profile__edit-button" type="button" aria-label="open-editing"></button>
+          <button class="profile__edit-button" type="button" aria-label="открыть-редактирование"></button>
         </div>
-        <button class="profile__add-button" type="button" aria-label="open-adding"></button>
+        <button class="profile__add-button" type="button" aria-label="открыть-добавление"></button>
       </section>
 
       <section class="elements">
@@ -71,7 +71,7 @@
           </li>
         </ul>
       </section>
-    </article>
+    </main>
 
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
@@ -81,14 +81,14 @@
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form" name="form" method="post">
-          <input name="input-name" type="text" class="popup__input_name popup__input" placeholder="Имя" required />
-          <input name="input-job" type="text" class="popup__input_job popup__input" placeholder="Профессия"
+          <input name="input-name" type="text" class="popup__input_text_name popup__input" placeholder="Имя" required />
+          <input name="input-job" type="text" class="popup__input_text_job popup__input" placeholder="Профессия"
             required />
           <button type="submit" class="popup__submit" id="submit">
             Сохранить
           </button>
         </form>
-        <button class="popup__close" type="button" aria-label="close"></button>
+        <button class="popup__close" type="button" aria-label="закрытие"></button>
       </div>
     </div>
   </div>
