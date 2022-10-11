@@ -22,7 +22,7 @@ function closePopup() {
 
 
 function formSubmitHandler(event) {
- // event.preventDefault();//
+  event.preventDefault();
   popupTitle.textContent = formElementName.value;
   popupSubTitle.textContent = formElementJob.value;
   closePopup();
