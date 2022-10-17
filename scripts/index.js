@@ -33,6 +33,7 @@ function closeModal(evt) {
   }
 }
 
+
 function formSubmitProfileHandler(evt) {
   evt.preventDefault();
   popupTitle.textContent = inputProfileName.value;
@@ -44,10 +45,14 @@ function formSubmitCardHandler(evt) {
   evt.preventDefault();
   const newNameCard = inputCardName.value
   const newLinkCard = inputCardLink.value
-  createCard({
-    name: newNameCard,
-    link: newLinkCard
-  })
+  
+  const newCard = createCard({
+    src: newLinkCard,
+    alt: newNameCard,
+    textContent: newNameCard
+});
+  
+  elementList.prepend(newCard);
   closeModal(evt);
 }
 
@@ -69,9 +74,31 @@ formEditingProfile.addEventListener("submit", formSubmitProfileHandler);
 formAddingCard.addEventListener("submit", formSubmitCardHandler);
 
 /* Работа с Темплэйт Элементами */
-const elementsList = document.querySelector(".elements__table");
+const elementList = document.querySelector(".elements__table");
 const elementTemplate = document.querySelector(".element-template").content;
-const elementItem = elementTemplate.cloneNode(true);
+
+const removeItem = (element) => {
+  element.remove();
+}
+
+const createCard = (element) => {
+  const card = elementTemplate.cloneNode(true).querySelector(".element");
+  const cardLink = card.querySelector(".element__image");
+  const cardAlt = card.querySelector(".element__image");
+  const cardName = card.querySelector(".element__title");
+  const cardBtnRemove = card.querySelector(".element__trash");
+  const cardLike = card.querySelector(".element__like");
+ 
+  cardLink.src = element.link;
+  cardAlt.alt = element.alt;
+  cardName.textContent = element.name;
+  
+  cardBtnRemove.addEventListener('click', () => removeItem(card));
+  cardLike.addEventListener('click', function (event) {
+    event.target.classList.toggle('element__like_active');
+  })
+  return card;
+}
 
 const elements = [
   {
@@ -105,31 +132,13 @@ const elements = [
     alt: "Париж",
   },
 ];
-/* Добавление карточек черещ Template */
+
 elements.forEach(function (item) {
-  const elementItem = elementTemplate.cloneNode(true);
-  elementItem.querySelector(".element__image").src = item.link;
-  elementItem.querySelector(".element__image").alt = item.alt;
-  elementItem.querySelector(".element__title").textContent = item.name;
-
-  elementItem.querySelector(".element__like").addEventListener('click', function (event) {
-    event.target.classList.toggle('element__like_active');
-  })
-
-  elementsList.append(elementItem);
+  const cardElement = createCard(item);
+  elementList.append(cardElement);
 });
 
-/* Форма добавления карточек */
-const createCard = (item) => {
-  const card = elementTemplate.cloneNode(true);
-  card.querySelector(".element__image").src = item.link;
-  card.querySelector(".element__title").textContent = item.name;
-  card.querySelector(".element__like").addEventListener('click', function (event) {
-    event.target.classList.toggle('element__like_active');
-  })
 
-  elementsList.prepend(card)
-}
 
 
 
@@ -161,3 +170,16 @@ popupEle.addEventListener('click', function (event) {
   }
 });
 formEditingProfile.addEventListener('submit', formSubmitHandler); */
+
+/* elements.forEach(function (item) {
+  const elementItem = elementTemplate.cloneNode(true);
+  elementItem.querySelector(".element__image").src = item.link;
+  elementItem.querySelector(".element__image").alt = item.alt;
+  elementItem.querySelector(".element__title").textContent = item.name;
+ 
+  elementItem.querySelector(".element__like").addEventListener('click', function (event) {
+    event.target.classList.toggle('element__like_active');
+  })
+  
+  elementList.append(elementItem);
+}); */
