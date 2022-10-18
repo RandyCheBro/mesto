@@ -1,8 +1,3 @@
-/* const popupOpen = document.querySelector('.profile__edit-button'); */
-/* const popupClose = document.querySelectorAll('.popup__close');
-const popupEle = document.querySelectorAll('.popup');*/
-/* const formSubmit = document.querySelector(".popup__submit"); */
-
 const formEditingProfile = document.querySelector(".popup__form");
 const inputProfileName = document.querySelector(".popup__input_text_name");
 const inputProfileJob = document.querySelector(".popup__input_text_job");
@@ -11,17 +6,28 @@ const inputCardName = document.querySelector(".popup__input_text_image-name");
 const inputCardLink = document.querySelector(".popup__input_text_image-link");
 const popupTitle = document.querySelector(".profile__name");
 const popupSubTitle = document.querySelector(".profile__job");
-
-/* Функционал 5 ПР */
+const modalCard = document.querySelector(".popup-card");
+const modalCardCloseBtn = document.querySelector(".popup-card__close");
+const modalCardImage = document.querySelector(".popup-card__image");
+const modalCardName = document.querySelector(".popup-card__title");
 const modalBtns = document.querySelectorAll(".modal-open");
 const modals = document.querySelectorAll(".popup");
+const elementList = document.querySelector(".elements__table");
+const elementTemplate = document.querySelector(".element-template").content;
 
 function openModal(elem) {
   elem.classList.add("popup_is-opened");
   inputProfileName.value = popupTitle.textContent;
   inputProfileJob.value = popupSubTitle.textContent;
-  inputCardName.value = popupTitle.textContent;//удалить/отредактировать
-  inputCardLink.value = popupSubTitle.textContent;//удалить/отредактировать
+  inputCardName.value = "";
+  inputCardLink.value = "";
+}
+
+function openModalCard(photoData) {
+  modalCard.classList.add("popup-card_is-opened");
+  modalCardImage.src = photoData.link;
+  modalCardImage.alt = photoData.alt;
+  modalCardName.textContent = photoData.name;
 }
 
 function closeModal(evt) {
@@ -31,6 +37,10 @@ function closeModal(evt) {
   ) {
     evt.target.closest(".popup").classList.remove("popup_is-opened");
   }
+}
+
+function closeModalCard() {
+  modalCard.classList.remove("popup-card_is-opened");
 }
 
 
@@ -47,9 +57,9 @@ function formSubmitCardHandler(evt) {
   const newLinkCard = inputCardLink.value
   
   const newCard = createCard({
-    src: newLinkCard,
+    link: newLinkCard,
     alt: newNameCard,
-    textContent: newNameCard
+    name: newNameCard
 });
   
   elementList.prepend(newCard);
@@ -74,9 +84,6 @@ formEditingProfile.addEventListener("submit", formSubmitProfileHandler);
 formAddingCard.addEventListener("submit", formSubmitCardHandler);
 
 /* Работа с Темплэйт Элементами */
-const elementList = document.querySelector(".elements__table");
-const elementTemplate = document.querySelector(".element-template").content;
-
 const removeItem = (element) => {
   element.remove();
 }
@@ -92,7 +99,9 @@ const createCard = (element) => {
   cardLink.src = element.link;
   cardAlt.alt = element.alt;
   cardName.textContent = element.name;
-  
+
+  cardLink.addEventListener('click', () => openModalCard(element));
+  modalCardCloseBtn.addEventListener('click', closeModalCard);
   cardBtnRemove.addEventListener('click', () => removeItem(card));
   cardLike.addEventListener('click', function (event) {
     event.target.classList.toggle('element__like_active');
