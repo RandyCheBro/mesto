@@ -9,8 +9,8 @@ const inputCardLink = document.querySelector(".popup__input_text_image-link");
 const popupTitle = document.querySelector(".profile__name");
 const popupSubTitle = document.querySelector(".profile__job");
 const modalCloseBtns = document.querySelectorAll(".popup__close");
-const modalCardImage = document.querySelector(".popup-card__image");
-const modalCardName = document.querySelector(".popup-card__title");
+const modalCardImage = document.querySelector(".popup__image");
+const modalCardName = document.querySelector(".popup__title-card");
 const modals = document.querySelectorAll(".popup");
 const elementList = document.querySelector(".elements__table");
 const elementTemplate = document.querySelector(".element-template").content;
@@ -37,9 +37,6 @@ function openModalAddingCard() {
   openModal(popup);
 }
 
-btnEditingProfile.addEventListener('click', openModalEditingProfile)
-btnAddingCard.addEventListener('click', openModalAddingCard);
-
 modalCloseBtns.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closeModal(popup));
@@ -62,19 +59,21 @@ function handlerSubmitCreateCard(evt) {
     link: newLinkCard,
     alt: newNameCard,
     name: newNameCard
-});
+  });
   elementList.prepend(newCard);
   closeModal(popup);
 }
 
 function openModalCard(photoData) {
-  modalCardImage.src = photoData.link; 
-  modalCardImage.alt = photoData.alt; 
+  modalCardImage.src = photoData.link;
+  modalCardImage.alt = photoData.alt;
   modalCardName.textContent = photoData.name;
-  const popup = document.querySelector(".popup_opening_card");
+  const popup = document.querySelector(".popup_background_transparent");
   openModal(popup);
 }
 
+btnEditingProfile.addEventListener('click', openModalEditingProfile)
+btnAddingCard.addEventListener('click', openModalAddingCard);
 formEditingProfile.addEventListener("submit", handlerSubmitProfileForm);
 formAddingCard.addEventListener("submit", handlerSubmitCreateCard);
 
@@ -89,7 +88,7 @@ const createCard = (element) => {
   const cardName = card.querySelector(".element__title");
   const cardBtnRemove = card.querySelector(".element__trash");
   const cardLike = card.querySelector(".element__like");
- 
+
   cardImage.src = element.link;
   cardImage.alt = element.alt;
   cardName.textContent = element.name;
