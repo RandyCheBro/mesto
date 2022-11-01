@@ -16,20 +16,24 @@ const elementList = document.querySelector(".elements__table");
 const elementTemplate = document.querySelector(".element-template").content;
 const modalEditProfile = document.querySelector(".popup_type_editing-profile");
 const modalAddCard = document.querySelector(".popup_type_adding-card");
-const modalPreviewImage = document.querySelector(".popup_type_image-preview")
+const modalPreviewImage = document.querySelector(".popup_type_image-preview");
 
 function openModal(item) {
   item.classList.add("popup_is-opened");
+  document.addEventListener("keydown", keyHandler);
 }
 
 function closeModal(item) {
   item.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", keyHandler);
 }
 
 function openModalEditingProfile() {
   inputProfileName.value = popupTitle.textContent;
   inputProfileJob.value = popupSubTitle.textContent;
+  const buttonSave = modalEditProfile.querySelector(".popup__submit")
   openModal(modalEditProfile);
+  disableButton(buttonSave);
 }
 
 function openModalAddingCard() {
@@ -74,6 +78,21 @@ btnEditingProfile.addEventListener('click', openModalEditingProfile)
 btnAddingCard.addEventListener('click', openModalAddingCard);
 formEditingProfile.addEventListener("submit", handleSubmitProfileForm);
 formAddingCard.addEventListener("submit", handleSubmitCreateCard);
+
+modals.forEach((item) => {
+  item.addEventListener("click", (evt) => {
+    if(evt.target === evt.currentTarget) {
+      closeModal(item);
+    };
+  });
+});
+
+const keyHandler = (evt) => {
+  const popup = document.querySelector(".popup_is-opened");
+  if(evt.key === "Escape") {
+    closeModal(popup);
+  };
+}
 
 const removeItem = (evt) => {
   evt.target.closest(".element").remove();
