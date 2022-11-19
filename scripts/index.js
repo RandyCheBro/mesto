@@ -1,3 +1,4 @@
+import {Card} from "./card.js";
 const formEditingProfile = document.forms["edit-profile"];
 const inputProfileName = document.querySelector(".popup__input_text_name");
 const inputProfileJob = document.querySelector(".popup__input_text_job");
@@ -12,7 +13,7 @@ const modalCardImage = document.querySelector(".popup__image");
 const modalCardName = document.querySelector(".popup__title-card");
 const modals = document.querySelectorAll(".popup");
 const elementList = document.querySelector(".elements__table");
-const elementTemplate = document.querySelector(".element-template").content;
+const templateSelector = ".element-template";
 const modalEditProfile = document.querySelector(".popup_type_editing-profile");
 const modalAddCard = document.querySelector(".popup_type_adding-card");
 const modalPreviewImage = document.querySelector(".popup_type_image-preview");
@@ -84,29 +85,10 @@ const handleEscape = (evt) => {
   };
 }
 
-const removeItem = (evt) => {
-  evt.target.closest(".element").remove();
-}
-
-const likeItem = (evt) => {
-  evt.target.classList.toggle('element__like_active');
-}
-
 const createCard = (element) => {
-  const card = elementTemplate.cloneNode(true).querySelector(".element");
-  const cardImage = card.querySelector(".element__image");
-  const cardName = card.querySelector(".element__title");
-  const cardBtnRemove = card.querySelector(".element__trash");
-  const cardLike = card.querySelector(".element__like");
-
-  cardImage.src = element.link;
-  cardImage.alt = element.alt;
-  cardName.textContent = element.name;
-
-  cardImage.addEventListener('click', () => openModalCard(element));
-  cardBtnRemove.addEventListener('click', removeItem);
-  cardLike.addEventListener('click', likeItem);
-  return card;
+  const card = new Card(templateSelector, element, openModalCard);
+  const cardElement = card.create();
+  return cardElement;
 }
 
 elements.forEach(function (item) {
