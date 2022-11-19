@@ -1,4 +1,7 @@
-import {Card} from "./card.js";
+import {Card} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
+import {elements, validation} from "./cards.js";
+
 const formEditingProfile = document.forms["edit-profile"];
 const inputProfileName = document.querySelector(".popup__input_text_name");
 const inputProfileJob = document.querySelector(".popup__input_text_job");
@@ -95,3 +98,9 @@ elements.forEach(function (item) {
   const cardElement = createCard(item);
   elementList.append(cardElement);
 });
+
+const formValidatorEditingProfile = new FormValidator(validation, formEditingProfile);
+formValidatorEditingProfile.enableValidation();
+
+const formValidatorAddingCard = new FormValidator(validation, formAddingCard);
+formValidatorAddingCard.enableValidation();

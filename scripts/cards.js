@@ -1,4 +1,4 @@
-const elements = [
+export const elements = [
   {
     name: "Рио-де-Жанейро",
     link: "./images/rio.jpg",
@@ -30,3 +30,12 @@ const elements = [
     alt: "Париж",
   },
 ];
+
+export const validation = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_inactive",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active"
+};
