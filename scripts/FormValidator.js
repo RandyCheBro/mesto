@@ -26,6 +26,7 @@ export class FormValidator {
   };
 
   _hideError(inputElement) {
+    this._errorElement = this._elementForm.querySelector(`.input-error-${inputElement.name}`);
     inputElement.classList.remove(this._inputErrorClass);
     this._errorElement.classList.remove(this._errorClass);
     this._errorElement.textContent = "";
@@ -61,14 +62,16 @@ export class FormValidator {
     };
   }
 
+  resetValidation() {
+    this._toggleButtonState()
+
+    this._inputList.forEach((inputElement) => {
+      this._hideError(inputElement)
+    });
+  }
+
   _setEventListeners() {
     this._toggleButtonState();
-
-    this._elementForm.addEventListener("reset", () => {
-      setTimeout(() => {
-        this._toggleButtonState();
-      }, 0);
-    });
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {

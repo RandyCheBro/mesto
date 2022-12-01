@@ -37,6 +37,11 @@ function openModalEditingProfile() {
   openModal(modalEditProfile);
 }
 
+function openModalAddingProfile() {
+  openModal(modalAddCard);
+  formValidatorAddingCard.resetValidation();
+}
+
 function handleSubmitProfileForm(evt) {
   evt.preventDefault();
   popupTitle.textContent = inputProfileName.value;
@@ -66,7 +71,7 @@ function openModalCard(photoData) {
 }
 
 btnEditingProfile.addEventListener('click', openModalEditingProfile)
-btnAddingCard.addEventListener('click', () => openModal(modalAddCard));
+btnAddingCard.addEventListener('click', openModalAddingProfile);
 formEditingProfile.addEventListener("submit", handleSubmitProfileForm);
 formAddingCard.addEventListener("submit", handleSubmitCreateCard);
 
