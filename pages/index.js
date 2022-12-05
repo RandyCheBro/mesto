@@ -1,25 +1,38 @@
-import {Card} from "./Card.js";
-import {FormValidator} from "./FormValidator.js";
-import {elements, validation} from "./cards.js";
+import {Card} from "../components/Card.js";
+import {FormValidator} from "../components/FormValidator.js";
+import {Section} from "../components/Section.js";
+import {
+  elements,
+  validation,
+  formEditingProfile,
+  inputProfileName,
+  inputProfileJob,
+  btnEditingProfile,
+  btnAddingCard,
+  formAddingCard,
+  inputCardName,
+  inputCardLink,
+  popupTitle,
+  popupSubTitle,
+  modalCardImage,
+  modalCardName,
+  modals,
+  elementList,
+  templateSelector,
+  modalEditProfile,
+  modalAddCard,
+  modalPreviewImage
+} from "../utils/constants.js";
 
-const formEditingProfile = document.forms["edit-profile"];
-const inputProfileName = document.querySelector(".popup__input_text_name");
-const inputProfileJob = document.querySelector(".popup__input_text_job");
-const btnEditingProfile = document.querySelector(".profile__edit-button");
-const btnAddingCard = document.querySelector(".profile__add-button");
-const formAddingCard = document.forms["add-card"];
-const inputCardName = document.querySelector(".popup__input_text_image-name");
-const inputCardLink = document.querySelector(".popup__input_text_image-link");
-const popupTitle = document.querySelector(".profile__name");
-const popupSubTitle = document.querySelector(".profile__job");
-const modalCardImage = document.querySelector(".popup__image");
-const modalCardName = document.querySelector(".popup__title-card");
-const modals = document.querySelectorAll(".popup");
-const elementList = document.querySelector(".elements__table");
-const templateSelector = ".element-template";
-const modalEditProfile = document.querySelector(".popup_type_editing-profile");
-const modalAddCard = document.querySelector(".popup_type_adding-card");
-const modalPreviewImage = document.querySelector(".popup_type_image-preview");
+const cardList = new Section({
+  renderer: (element => {
+    const card = new Card(templateSelector, element, openModalCard);
+    const CardElement = card.create();
+    cardList.addItem(CardElement);
+  })
+}, elementList)
+
+cardList.renderItems(elements);
 
 function openModal(item) {
   item.classList.add("popup_is-opened");
@@ -99,10 +112,10 @@ const createCard = (element) => {
   return cardElement;
 }
 
-elements.forEach(function (item) {
+/* elements.forEach(function (item) {
   const cardElement = createCard(item);
   elementList.append(cardElement);
-});
+}); */
 
 const formValidatorEditingProfile = new FormValidator(validation, formEditingProfile);
 formValidatorEditingProfile.enableValidation();
