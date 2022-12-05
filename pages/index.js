@@ -1,6 +1,7 @@
 import {Card} from "../components/Card.js";
 import {FormValidator} from "../components/FormValidator.js";
 import {Section} from "../components/Section.js";
+import {Popup} from "../components/Popup.js";
 import {
   elements,
   validation,
@@ -34,15 +35,15 @@ const cardList = new Section({
 
 cardList.renderItems(elements);
 
-function openModal(item) {
+/* function openModal(item) {
   item.classList.add("popup_is-opened");
   document.addEventListener("keydown", handleEscape);
-}
+} */
 
-function closeModal(item) {
+/* function closeModal(item) {
   item.classList.remove("popup_is-opened");
   document.removeEventListener("keydown", handleEscape);
-}
+} */
 
 function openModalEditingProfile() {
   inputProfileName.value = popupTitle.textContent;
@@ -88,7 +89,7 @@ btnAddingCard.addEventListener('click', openModalAddingProfile);
 formEditingProfile.addEventListener("submit", handleSubmitProfileForm);
 formAddingCard.addEventListener("submit", handleSubmitCreateCard);
 
-modals.forEach((modal) => {
+/* modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
     if(evt.target.classList.contains("popup_is-opened")) {
       closeModal(modal);
@@ -104,7 +105,7 @@ const handleEscape = (evt) => {
     const popup = document.querySelector(".popup_is-opened");
     closeModal(popup);
   };
-}
+} */
 
 const createCard = (element) => {
   const card = new Card(templateSelector, element, openModalCard);
