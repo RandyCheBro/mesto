@@ -13,9 +13,9 @@ export const modalCardName = document.querySelector(".popup__title-card");
 export const modals = document.querySelectorAll(".popup");
 export const elementList = ".elements__table";
 export const templateSelector = ".element-template";
-export const modalEditProfile = ".popup_type_editing-profile";
-export const modalAddCard = ".popup_type_adding-card";
-export const modalPreviewImage = ".popup_type_image-preview";
+export const modalEditProfile = document.querySelector(".popup_type_editing-profile");
+export const modalAddCard = document.querySelector(".popup_type_adding-card");
+export const modalPreviewImage = document.querySelector(".popup_type_image-preview");
 
 export const validation = {
   formSelector: ".popup__form",
