@@ -1,7 +1,9 @@
 import {Card} from "../components/Card.js";
 import {FormValidator} from "../components/FormValidator.js";
 import {Section} from "../components/Section.js";
-import {Popup} from "../components/Popup.js";
+import {Modal} from "../components/Modal.js";
+import {ModalWithImage} from "../components/ModalWithImage.js";
+import {ModalWithForm} from "../components/ModalWithForm.js";
 import {
   elements,
   validation,
@@ -77,11 +79,15 @@ function handleSubmitCreateCard(evt) {
   closeModal(modalAddCard);
 }
 
+const modalImage = new ModalWithImage(modalCardImage, modalCardName, modalPreviewImage)
+modalImage.setEventListeners();
+
 function openModalCard(photoData) {
-  modalCardImage.src = photoData.link;
+  /* modalCardImage.src = photoData.link;
   modalCardImage.alt = photoData.alt;
-  modalCardName.textContent = photoData.name;
-  openModal(modalPreviewImage);
+  modalCardName.textContent = photoData.name; */
+  modalImage.open(photoData)
+  /* openModal(modalPreviewImage); */
 }
 
 btnEditingProfile.addEventListener('click', openModalEditingProfile)
@@ -123,3 +129,4 @@ formValidatorEditingProfile.enableValidation();
 
 const formValidatorAddingCard = new FormValidator(validation, formAddingCard);
 formValidatorAddingCard.enableValidation();
+
