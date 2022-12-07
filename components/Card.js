@@ -29,7 +29,7 @@ export class Card {
     this._cardLike = this._card.querySelector(".element__like");
   
     this._cardImage.src = this._element.link;
-    this._cardImage.alt = this._element.alt;
+    this._cardImage.alt = this._element.name;
     this._cardName.textContent = this._element.name;
     this._setEventListeners();
     
