@@ -4,19 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./pages/index.css" />
   <title>Место</title>
 </head>
 
 <body class="page">
   <div class="page__container">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип" />
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип" />
     </header>
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/Avatar.png" alt="фото Жак Ив Кусто" />
+        <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="фото Жак Ив Кусто" />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__job">Исследователь океана</p>
@@ -97,15 +96,6 @@
     </li>
   </template>
 
-  <script type="module" src="./components/Card.js"></script>
-  <script type="module" src="./pages/index.js"></script>
-  <script type="module" src="./utils/constants.js"></script>
-  <script type="module" src="./components/FormValidator.js"></script>
-  <script type="module"  src="./components/Section.js"></script>
-  <script type="module"  src="./components/Modal.js"></script>
-  <script type="module"  src="./components/ModalWithImage.js"></script>
-  <script type="module"  src="./components/ModalWithForm.js"></script>
-  <script type="module"  src="./components/UserInfo.js"></script>
 </body>
 
 </html>
