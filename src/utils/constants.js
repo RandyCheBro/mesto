@@ -1,3 +1,10 @@
+const rio = new URL('../images/rio.jpg', import.meta.url);
+const london = new URL('../images/london.jpg', import.meta.url);
+const singapore = new URL('../images/Singapore.jpg', import.meta.url);
+const newYork = new URL('../images/new-york.jpg', import.meta.url);
+const sanktPetersburg = new URL('../images/sankt-petersburg.jpg', import.meta.url);
+const paris = new URL('../images/paris.jpg', import.meta.url);
+
 export const formEditingProfile = document.forms["edit-profile"];
 export const inputProfileName = document.querySelector(".popup__input_text_name");
 export const inputProfileJob = document.querySelector(".popup__input_text_job");
@@ -29,32 +36,32 @@ export const validation = {
 export const elements = [
   {
     name: "Рио-де-Жанейро",
-    link: "./images/rio.jpg",
+    link: rio,
     alt: "Рио-де-Жанейро",
   },
   {
     name: "Лондон",
-    link: "./images/london.jpg",
+    link: london,
     alt: "лондон",
   },
   {
     name: "Сингапур",
-    link: "./images/Singapore.jpg",
+    link: singapore,
     alt: "сингапур",
   },
   {
     name: "Нью-Йорк",
-    link: "./images/new-york.jpg",
+    link: newYork,
     alt: "Нью-Йорк",
   },
   {
     name: "Санкт-Петербург",
-    link: "./images/sankt-petersburg.jpg",
+    link: sanktPetersburg,
     alt: "Санкт-Петербург",
   },
   {
     name: "Париж",
-    link: "./images/paris.jpg",
+    link: paris,
     alt: "Париж",
   },
 ];
