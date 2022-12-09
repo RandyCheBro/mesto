@@ -1,13 +1,5 @@
 export class FormValidator {
-  _elementForm;
-  _inputSelector;
-  _inputList;
-  _submitButtonSelector;
-  _buttonElement;
-  _inactiveButtonClass;
-  _inputErrorClass;
-  _errorClass;
-
+ 
   constructor(config, elementForm) {
     this._elementForm = elementForm;
     this._inputSelector = config.inputSelector;
