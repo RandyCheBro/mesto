@@ -1,19 +1,17 @@
 import { Modal } from "./Modal.js";
 
 export class ModalWithImage extends Modal {
-  _modalCardImage
-  _modalCardName
-
-  constructor(modalCardImage, modalCardName, modalSelector) {
+  
+  constructor(modalSelector) {
     super(modalSelector);
-    this._modalCardImage = modalCardImage;
-    this._modalCardName = modalCardName;
+    this._modalCardImage = this._modalSelector.querySelector(".popup__image");
+    this._modalCardName = this._modalSelector.querySelector(".popup__title-card");
   }
 
-  open(photoData) {
-    this._modalCardImage.src = photoData.link;
-    this._modalCardImage.alt = photoData.alt;
-    this._modalCardName.textContent = photoData.name;
+  open({name, link}) {
+    this._modalCardImage.src = link;
+    this._modalCardImage.alt = name;
+    this._modalCardName.textContent = name;
     super.open();
   }
 }

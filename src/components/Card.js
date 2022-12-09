@@ -1,17 +1,8 @@
 export class Card {
-  _element;
-  _selector
-  _template;
-  _card;
-  _cardImage;
-  _cardName;
-  _cardBtnRemove;
-  _cardLike;
-  _openModalCard
-
-  constructor(selector, element, openModalCard) {
+ 
+  constructor(selector, elementData, openModalCard) {
     this._selector = selector;
-    this._element = element;
+    this.elementData = elementData;
     this._openModalCard = openModalCard;
   }
 
@@ -28,17 +19,17 @@ export class Card {
     this._cardBtnRemove = this._card.querySelector(".element__trash");
     this._cardLike = this._card.querySelector(".element__like");
   
-    this._cardImage.src = this._element.link;
-    this._cardImage.alt = this._element.name;
-    this._cardName.textContent = this._element.name;
+    this._cardImage.src = this.elementData.link;
+    this._cardImage.alt = this.elementData.name;
+    this._cardName.textContent = this.elementData.name;
     this._setEventListeners();
     
     return this._card;
   }
 
   _setEventListeners() {
-    this._cardImage.addEventListener('click', () => this._openModalCard(this._element));
-    this._cardBtnRemove.addEventListener('click', this._removeItem);
+    this._cardImage.addEventListener('click', () => this._openModalCard(this.elementData));
+    this._cardBtnRemove.addEventListener('click', () => this._removeItem());
     this._cardLike.addEventListener('click', this._likeItem);
   }
 
@@ -46,8 +37,8 @@ export class Card {
     evt.target.classList.toggle('element__like_active');
   }
 
-  _removeItem(evt) {
-    evt.target.closest(".element").remove();
+  _removeItem() {
+    this._card.remove();
   }
 
 }

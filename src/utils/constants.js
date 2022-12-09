@@ -15,14 +15,12 @@ export const inputCardName = document.querySelector(".popup__input_text_image-na
 export const inputCardLink = document.querySelector(".popup__input_text_image-link");
 export const popupTitle = ".profile__name";
 export const popupSubTitle = ".profile__job";
-export const modalCardImage = document.querySelector(".popup__image");
-export const modalCardName = document.querySelector(".popup__title-card");
 export const modals = document.querySelectorAll(".popup");
 export const elementList = ".elements__table";
 export const templateSelector = ".element-template";
-export const modalEditProfile = document.querySelector(".popup_type_editing-profile");
-export const modalAddCard = document.querySelector(".popup_type_adding-card");
-export const modalPreviewImage = document.querySelector(".popup_type_image-preview");
+export const modalEditProfile = ".popup_type_editing-profile";
+export const modalAddCard = ".popup_type_adding-card";
+export const modalPreviewImage = ".popup_type_image-preview";
 
 export const validation = {
   formSelector: ".popup__form",
@@ -37,31 +35,25 @@ export const elements = [
   {
     name: "Рио-де-Жанейро",
     link: rio,
-    alt: "Рио-де-Жанейро",
   },
   {
     name: "Лондон",
     link: london,
-    alt: "лондон",
   },
   {
     name: "Сингапур",
     link: singapore,
-    alt: "сингапур",
   },
   {
     name: "Нью-Йорк",
     link: newYork,
-    alt: "Нью-Йорк",
   },
   {
     name: "Санкт-Петербург",
     link: sanktPetersburg,
-    alt: "Санкт-Петербург",
   },
   {
     name: "Париж",
     link: paris,
-    alt: "Париж",
   },
 ];

@@ -8,6 +8,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0);
   transition: opacity 0.3 linear;
+  z-index: 1;
   cursor: pointer;
   right: 20px;
   top: 20px;

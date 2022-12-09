@@ -2,7 +2,6 @@ import './index.css';
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
-import { Modal } from "../components/Modal.js";
 import { ModalWithImage } from "../components/ModalWithImage.js";
 import { ModalWithForm } from "../components/ModalWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
@@ -15,13 +14,8 @@ import {
   btnEditingProfile,
   btnAddingCard,
   formAddingCard,
-  inputCardName,
-  inputCardLink,
   popupTitle,
   popupSubTitle,
-  modalCardImage,
-  modalCardName,
-  modals,
   elementList,
   templateSelector,
   modalEditProfile,
@@ -30,16 +24,14 @@ import {
 } from "../utils/constants.js";
 
 const cardList = new Section({
-  renderer: (element => {
-    const card = new Card(templateSelector, element, openModalCard);
-    const cardElement = card.create();
-    cardList.addItem(cardElement);
+  renderer: (elementData => {
+    cardList.addItem(createCard(elementData));
   })
-}, elementList)
-cardList.renderItems(elements);
+}, elementList, elements)
+cardList.renderItems();
 
 
-const modalImage = new ModalWithImage(modalCardImage, modalCardName, modalPreviewImage)
+const modalImage = new ModalWithImage(modalPreviewImage)
 modalImage.setEventListeners();
 
 
@@ -55,21 +47,29 @@ const modalAddingCard = new ModalWithForm({
 modalAddingCard.setEventListeners();
 
 
-const profileInfo = new UserInfo({nameSelector: popupTitle, jobSelector: popupSubTitle});
+const profileInfo = new UserInfo({ nameSelector: popupTitle, jobSelector: popupSubTitle });
 
 const modalEditingProfile = new ModalWithForm({
   handleFormSubmit: (formData) => {
-    profileInfo.setUserInfo(formData["profile-name"], formData["profile-job"])
+    profileInfo.setUserInfo({
+      name: formData["profile-name"],
+      job: formData["profile-job"]
+    })
     modalEditingProfile.close();
   }
 }, modalEditProfile)
 modalEditingProfile.setEventListeners();
 
+const formValidatorEditingProfile = new FormValidator(validation, formEditingProfile);
+formValidatorEditingProfile.enableValidation();
+
+const formValidatorAddingCard = new FormValidator(validation, formAddingCard);
+formValidatorAddingCard.enableValidation();
 
 function openModalEditingProfile() {
   modalEditingProfile.open()
   formValidatorEditingProfile.resetValidation();
-  const {name, description} = profileInfo.getUserInfo();
+  const { name, description } = profileInfo.getUserInfo();
   inputProfileName.value = name;
   inputProfileJob.value = description;
 }
@@ -84,18 +84,11 @@ function openModalCard(photoData) {
 }
 
 
-const createCard = (element) => {
+function createCard(element) {
   const card = new Card(templateSelector, element, openModalCard);
-  const cardElement = card.create();
-  return cardElement;
+  return card.create();
 }
+
 
 btnEditingProfile.addEventListener('click', openModalEditingProfile)
 btnAddingCard.addEventListener('click', openModalAddingProfile);
-
-const formValidatorEditingProfile = new FormValidator(validation, formEditingProfile);
-formValidatorEditingProfile.enableValidation();
-
-const formValidatorAddingCard = new FormValidator(validation, formAddingCard);
-formValidatorAddingCard.enableValidation();
-

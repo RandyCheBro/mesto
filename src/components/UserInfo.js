@@ -1,6 +1,5 @@
 export class UserInfo {
-  _userName
-  _userJob
+  
   constructor({ nameSelector, jobSelector }) {
     this._userName = document.querySelector(nameSelector);
     this._userJob = document.querySelector(jobSelector);
@@ -14,8 +13,8 @@ export class UserInfo {
     return userInfo;
   }
 
-  setUserInfo(inputNameValue, inputJobValue) {
-    this._userName.textContent = inputNameValue;
-    this._userJob.textContent = inputJobValue;
+  setUserInfo({name, job}) {
+    this._userName.textContent = name;
+    this._userJob.textContent = job;
   }
 }

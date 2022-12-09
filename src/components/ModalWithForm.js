@@ -1,23 +1,22 @@
 import { Modal } from "./Modal.js";
 
 export class ModalWithForm extends Modal {
-  _handleFormSubmit
-  _modalForm
+ 
   constructor({ handleFormSubmit }, modalSelector) {
     super(modalSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._modalForm = this._modalSelector.querySelector(".popup__form");
+    this._inputList = this._modalForm.querySelectorAll(".popup__input");
   }
 
   _getInputValues() {
-    this._InputList = this._modalForm.querySelectorAll(".popup__input");
-    this._formValues = {};
+    const formValues = {};
 
-    this._InputList.forEach(input => {
-      this._formValues[input.name] = input.value;
+    this._inputList.forEach(input => {
+      formValues[input.name] = input.value;
     })
 
-    return this._formValues;
+    return formValues;
   }
 
   setEventListeners() {

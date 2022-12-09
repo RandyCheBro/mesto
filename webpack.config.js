@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подклю�
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');// подключили к проекту mini-css-extract-plugin
 
 module.exports = {
+  devtool: 'eval-source-map',
   entry: { main: './src/pages/index.js' },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -31,12 +32,25 @@ module.exports = {
         exclude: '/node_modules/'
       },
 
-      // добавили правило для обработки файлов
+      // добавили правило для обработки изображений 
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями
-        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/resource'
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash][ext]',//найденные файлы изображений структурируем в отдельной папке
+        }
       },
+
+      // добавили правило для обработки шрифтов
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,// регулярное выражение, которое ищет все файлы с такими расширениями
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name].[hash][ext]',//найденные файлы шрифтов структурируем в отдельной папке
+        }
+      },
+
       {
         // применять это правило только к CSS-файлам
         test: /\.css$/,
