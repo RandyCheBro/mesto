@@ -23,11 +23,11 @@ import {
   modalPreviewImage
 } from "../utils/constants.js";
 
-const cardList = new Section({
+const cardList = new Section({elements,
   renderer: (elementData => {
     cardList.addItem(createCard(elementData));
   })
-}, elementList, elements)
+}, elementList)
 cardList.renderItems();
 
 
