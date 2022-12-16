@@ -22,7 +22,9 @@ import {
   modalEditProfile,
   modalAddCard,
   modalPreviewImage,
-  quantityLike
+  quantityLike,
+  modalConfirm,
+  formConfirm
 } from "../utils/constants.js";
 
 const api = new Api({
