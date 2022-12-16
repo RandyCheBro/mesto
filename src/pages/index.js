@@ -7,7 +7,7 @@ import { ModalWithImage } from "../components/ModalWithImage.js";
 import { ModalWithForm } from "../components/ModalWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import {
-  elements,
+  /* elements, */
   validation,
   formEditingProfile,
   inputProfileName,
@@ -36,16 +36,29 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 })
-console.log(api.getUserInfo())
-console.log(api.getInitialCards())
 
-const cardList = new Section({elements,
+const cardList = new Section({
   renderer: (elementData => {
     cardList.addItem(createCard(elementData));
   })
 }, elementList)
-cardList.renderItems();
 
+console.log(api.getUserInfo())//удалить
+api.getUserInfo()
+.then((userData) => {
+  profileInfo.setUserInfo({
+    name: userData.name,
+    job: userData.about
+  })
+})
+
+
+api.getInitialCards()
+.then((elements) => {
+  console.log(elements)//удалить
+  cardList.renderItems(elements)
+})
+.catch((err) => console.log(err))
 
 const modalImage = new ModalWithImage(modalPreviewImage)
 modalImage.setEventListeners();
