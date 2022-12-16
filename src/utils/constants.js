@@ -23,6 +23,8 @@ export const modalAddCard = ".popup_type_adding-card";
 export const modalPreviewImage = ".popup_type_image-preview";
 
 export const quantityLike = document.querySelector(".element__quantity-like")
+export const modalConfirm = document.querySelector(".popup_type_confirm")
+export const formConfirm = document.querySelector(".popup__form_confirm")
 
 export const validation = {
   formSelector: ".popup__form",
