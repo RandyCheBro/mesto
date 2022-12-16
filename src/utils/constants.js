@@ -22,6 +22,8 @@ export const modalEditProfile = ".popup_type_editing-profile";
 export const modalAddCard = ".popup_type_adding-card";
 export const modalPreviewImage = ".popup_type_image-preview";
 
+export const quantityLike = document.querySelector(".element__quantity-like")
+
 export const validation = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
