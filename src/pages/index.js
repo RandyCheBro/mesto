@@ -1,4 +1,5 @@
 import './index.css';
+import { Api } from "../components/Api.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -20,8 +21,19 @@ import {
   templateSelector,
   modalEditProfile,
   modalAddCard,
-  modalPreviewImage
+  modalPreviewImage,
+  quantityLike
 } from "../utils/constants.js";
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-56',
+  headers: {
+    authorization: '6a0db938-2403-4f98-8704-25b1d87eef40',
+    'Content-Type': 'application/json'
+  }
+})
+console.log(api.getUserInfo())
+console.log(api.getInitialCards())
 
 const cardList = new Section({elements,
   renderer: (elementData => {
@@ -45,7 +57,6 @@ const modalAddingCard = new ModalWithForm({
   }
 }, modalAddCard)
 modalAddingCard.setEventListeners();
-
 
 const profileInfo = new UserInfo({ nameSelector: popupTitle, jobSelector: popupSubTitle });
 
