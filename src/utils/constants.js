@@ -21,10 +21,12 @@ export const templateSelector = ".element-template";
 export const modalEditProfile = ".popup_type_editing-profile";
 export const modalAddCard = ".popup_type_adding-card";
 export const modalPreviewImage = ".popup_type_image-preview";
+export const modalAvatar = ".popup_type_avatar"
+export const modalConfirm = ".popup_type_confirm"
 
 export const quantityLike = document.querySelector(".element__quantity-like")
-export const modalConfirm = document.querySelector(".popup_type_confirm")
-export const formConfirm = document.querySelector(".popup__form_confirm")
+export const formConfirm = document.forms["confirm"];
+export const formAvatar = document.forms["avatar"];
 
 export const validation = {
   formSelector: ".popup__form",
