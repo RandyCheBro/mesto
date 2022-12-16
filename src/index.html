@@ -84,12 +84,28 @@
     </div>
   </div>
 
-  <div class="popup popup_type_confirm popup_is-opened">
+  <div class="popup popup_type_confirm">
     <div class="popup__container">
       <h3 class="popup__title">Вы уверены?</h3>
       <form action="#" class="popup__form popup__form_confirm" name="confirm" method="post" novalidate>
         <button type="submit" class="popup__submit popup__submit_type_no-top-margin">
           Да
+        </button>
+      </form>
+      <button class="popup__close" type="button" aria-label="закрытие"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_avatar">
+    <div class="popup__container">
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form action="#" class="popup__form popup__form_avatar popup__form_type_less-top-margin" name="avatar" method="post" novalidate>
+        <div class="popup__input-field">
+          <input name="avatar-link" type="url" class="popup__input popup__input_text_image-link" placeholder="Ссылка на картинку"required />
+            <span class="popup__input-error input-error-avatar-link"></span>
+        </div>
+        <button type="submit" class="popup__submit">
+          Сохранить
         </button>
       </form>
       <button class="popup__close" type="button" aria-label="закрытие"></button>

@@ -24,7 +24,9 @@ import {
   modalPreviewImage,
   quantityLike,
   modalConfirm,
-  formConfirm
+  formConfirm,
+  modalAvatar,
+  formAvatar
 } from "../utils/constants.js";
 
 const api = new Api({
