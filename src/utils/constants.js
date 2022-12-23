@@ -22,11 +22,13 @@ export const modalEditProfile = ".popup_type_editing-profile";
 export const modalAddCard = ".popup_type_adding-card";
 export const modalPreviewImage = ".popup_type_image-preview";
 export const modalAvatar = ".popup_type_avatar"
-export const modalConfirm = ".popup_type_confirm"
+export const modalConfirmSelector = ".popup_type_confirm"
 
 export const quantityLike = document.querySelector(".element__quantity-like")
 export const formConfirm = document.forms["confirm"];
 export const formAvatar = document.forms["avatar"];
+export const btnEditingAvatar = document.querySelector(".profile__avatar-image")
+export const avatarSelector = ".profile__avatar-image"
 
 export const validation = {
   formSelector: ".popup__form",

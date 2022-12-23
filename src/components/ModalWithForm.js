@@ -7,6 +7,8 @@ export class ModalWithForm extends Modal {
     this._handleFormSubmit = handleFormSubmit;
     this._modalForm = this._modalSelector.querySelector(".popup__form");
     this._inputList = this._modalForm.querySelectorAll(".popup__input");
+    this._modalSubmitBtn = this._modalForm.querySelector(".popup__submit");
+    this._defaultBtnTextContent = this._modalSubmitBtn.textContent;
   }
 
   _getInputValues() {
@@ -31,5 +33,15 @@ export class ModalWithForm extends Modal {
   close() {
     super.close();
     this._modalForm.reset()
+  }
+
+  renderLoading(isLoading, text) {
+    if(isLoading) {
+      this._modalSubmitBtn.textContent = text;
+      console.log(this._modalSubmitBtn.textContent)
+    } else {
+      this._modalSubmitBtn.textContent = this._defaultBtnTextContent;
+      console.log(this._modalSubmitBtn.textContent)
+    }
   }
 }
