@@ -1,10 +1,3 @@
-const rio = new URL('../images/rio.jpg', import.meta.url);
-const london = new URL('../images/london.jpg', import.meta.url);
-const singapore = new URL('../images/Singapore.jpg', import.meta.url);
-const newYork = new URL('../images/new-york.jpg', import.meta.url);
-const sanktPetersburg = new URL('../images/sankt-petersburg.jpg', import.meta.url);
-const paris = new URL('../images/paris.jpg', import.meta.url);
-
 export const formEditingProfile = document.forms["edit-profile"];
 export const inputProfileName = document.querySelector(".popup__input_text_name");
 export const inputProfileJob = document.querySelector(".popup__input_text_job");
@@ -24,8 +17,6 @@ export const modalPreviewImage = ".popup_type_image-preview";
 export const modalAvatar = ".popup_type_avatar"
 export const modalConfirmSelector = ".popup_type_confirm"
 
-export const quantityLike = document.querySelector(".element__quantity-like")
-export const formConfirm = document.forms["confirm"];
 export const formAvatar = document.forms["avatar"];
 export const btnEditingAvatar = document.querySelector(".profile__avatar-image")
 export const avatarSelector = ".profile__avatar-image"
@@ -38,30 +29,3 @@ export const validation = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active"
 };
-
-export const elements = [
-  {
-    name: "Рио-де-Жанейро",
-    link: rio,
-  },
-  {
-    name: "Лондон",
-    link: london,
-  },
-  {
-    name: "Сингапур",
-    link: singapore,
-  },
-  {
-    name: "Нью-Йорк",
-    link: newYork,
-  },
-  {
-    name: "Санкт-Петербург",
-    link: sanktPetersburg,
-  },
-  {
-    name: "Париж",
-    link: paris,
-  },
-];

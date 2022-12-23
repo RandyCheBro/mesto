@@ -8,7 +8,6 @@ import { ModalWithForm } from "../components/ModalWithForm.js";
 import { ModalConfirm } from "../components/ModalConfirm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import {
-  /* elements, */
   validation,
   formEditingProfile,
   inputProfileName,
@@ -23,9 +22,7 @@ import {
   modalEditProfile,
   modalAddCard,
   modalPreviewImage,
-  quantityLike,
   modalConfirmSelector,
-  formConfirm,
   modalAvatar,
   formAvatar,
   btnEditingAvatar,
@@ -50,10 +47,8 @@ const cardList = new Section({
   })
 }, elementList)
 
-/* console.log(api.getUserInfo())//удалить */
 api.getUserInfo()
   .then((userData) => {
-    console.log(userData) //удалить
     userInfo = userData;
     profileInfo.setUserInfo({
       name: userData.name,
@@ -67,7 +62,6 @@ api.getUserInfo()
 
 api.getInitialCards()
   .then((elements) => {
-    console.log(elements)//удалить
     cardList.renderItems(elements.reverse())
   })
   .catch((err) => console.log(err))
@@ -84,9 +78,11 @@ const modalEditingAvatar = new ModalWithForm({
     })
       .then((data) => {
         btnEditingAvatar.src = data.avatar;
-        modalEditingAvatar.renderLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        modalEditingProfile.renderLoading(false);
+      })
       modalEditingAvatar.close();
   }
 }, modalAvatar)
@@ -102,9 +98,11 @@ const modalAddingCard = new ModalWithForm({
     })
       .then((data) => {
         cardList.addItem(createCard(data));
-        modalAddingCard.renderLoading(false)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        modalEditingProfile.renderLoading(false);
+      })
     modalAddingCard.close();
   }
 }, modalAddCard)
@@ -125,12 +123,11 @@ const modalEditingProfile = new ModalWithForm({
           job: data.about,
           avatar: userInfo.avatar
         })
-        modalEditingProfile.renderLoading(false);//работает
       })
-      .catch((err) => console.log(err));
-      /* .finnaly(() => {// не работает
+      .catch((err) => console.log(err))
+      .finally(() => {
         modalEditingProfile.renderLoading(false);
-      }) */
+      })
     modalEditingProfile.close();
   }
 }, modalEditProfile)
@@ -162,7 +159,6 @@ function openModalAddingProfile() {
 
 function openModalCard(photoData) {
   modalImage.open(photoData)
-  console.log(userInfo)//удалить
 }
 
 function openModalAvatar() {
@@ -182,17 +178,26 @@ function createCard(element) {
           api.deleteCard(card._cardId).then(() => {
             card.delete()
           })
+          .catch((err) => console.log(err))
           modalConfirm.close()
         }
       )
     },
     async (card) => {
-      const res = await api.addLike(card._cardId)
-      card.likeItem(res);
+      try {
+        const res = await api.addLike(card._cardId);
+        card.likeItem(res);
+      } catch(err) {
+        console.log(err);
+      }
     },
     async (card) => {
-      const res = await api.deleteLike(card._cardId)
-      card.likeItem(res);
+      try {
+        const res = await api.deleteLike(card._cardId);
+        card.likeItem(res);
+      } catch(err) {
+        console.log(err);
+      }
     }
   )
   return card.create();

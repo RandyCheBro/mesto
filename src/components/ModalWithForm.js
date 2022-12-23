@@ -38,10 +38,8 @@ export class ModalWithForm extends Modal {
   renderLoading(isLoading, text) {
     if(isLoading) {
       this._modalSubmitBtn.textContent = text;
-      console.log(this._modalSubmitBtn.textContent)
     } else {
       this._modalSubmitBtn.textContent = this._defaultBtnTextContent;
-      console.log(this._modalSubmitBtn.textContent)
     }
   }
 }
