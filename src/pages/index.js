@@ -55,14 +55,11 @@ api.getUserInfo()
       job: userData.about,
       avatar: userData.avatar
     });
-  })
-  .catch((err) => console.log(err))
-
-
-
-api.getInitialCards()
-  .then((elements) => {
-    cardList.renderItems(elements.reverse())
+    api.getInitialCards()
+      .then((elements) => {
+        cardList.renderItems(elements.reverse())
+      })
+      .catch((err) => console.log(err))
   })
   .catch((err) => console.log(err))
 
@@ -83,7 +80,7 @@ const modalEditingAvatar = new ModalWithForm({
       .finally(() => {
         modalEditingProfile.renderLoading(false);
       })
-      modalEditingAvatar.close();
+    modalEditingAvatar.close();
   }
 }, modalAvatar)
 modalEditingAvatar.setEventListeners()
@@ -108,7 +105,7 @@ const modalAddingCard = new ModalWithForm({
 }, modalAddCard)
 modalAddingCard.setEventListeners();
 
-const profileInfo = new UserInfo({ nameSelector: popupTitle, jobSelector: popupSubTitle, avatarSelector: avatarSelector});
+const profileInfo = new UserInfo({ nameSelector: popupTitle, jobSelector: popupSubTitle, avatarSelector: avatarSelector });
 
 const modalEditingProfile = new ModalWithForm({
   handleFormSubmit: (formData) => {
@@ -178,7 +175,7 @@ function createCard(element) {
           api.deleteCard(card._cardId).then(() => {
             card.delete()
           })
-          .catch((err) => console.log(err))
+            .catch((err) => console.log(err))
           modalConfirm.close()
         }
       )
@@ -187,7 +184,7 @@ function createCard(element) {
       try {
         const res = await api.addLike(card._cardId);
         card.likeItem(res);
-      } catch(err) {
+      } catch (err) {
         console.log(err);
       }
     },
@@ -195,7 +192,7 @@ function createCard(element) {
       try {
         const res = await api.deleteLike(card._cardId);
         card.likeItem(res);
-      } catch(err) {
+      } catch (err) {
         console.log(err);
       }
     }

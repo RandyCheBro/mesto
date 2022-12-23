@@ -1,5 +1,5 @@
 export class FormValidator {
- 
+
   constructor(config, elementForm) {
     this._elementForm = elementForm;
     this._inputSelector = config.inputSelector;

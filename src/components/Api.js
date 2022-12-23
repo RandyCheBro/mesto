@@ -55,7 +55,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(this._check)
+      .then(this._check)
   }
 
   addLike(cardId) {
@@ -63,7 +63,7 @@ export class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(this._check)
+      .then(this._check)
   }
 
   deleteLike(cardId) {
@@ -71,10 +71,10 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(this._check)
+      .then(this._check)
   }
 
-  changeAvatar({avatar}) {
+  changeAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
