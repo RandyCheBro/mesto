@@ -15,7 +15,9 @@
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="фото Жак Ив Кусто" />
+        <div class="profile__avatar">
+          <img class="profile__avatar-image" src="#" alt="аватар" />
+        </div>
         <div class="profile__info">
           <h1 class="profile__name"></h1>
           <p class="profile__job"></p>
@@ -114,14 +116,14 @@
 
   <template class="element-template">
     <li class="element">
-      <button class="element__trash" type="button"></button>
+      <button class="element__trash element__trash_hidden" type="button"></button>
       <img class="element__image" src="#" alt="" />
       <div class="element__description">
         <h2 class="element__title">
         </h2>
         <div class="element__like-group">
           <button class="element__like" type="button"></button>
-          <p class="element__quantity-like">1</p>
+          <p class="element__quantity-like"></p>
         </div>
       </div>
     </li>
