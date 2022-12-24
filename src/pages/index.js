@@ -10,8 +10,6 @@ import { UserInfo } from "../components/UserInfo.js";
 import {
   validation,
   formEditingProfile,
-  inputProfileName,
-  inputProfileJob,
   btnEditingProfile,
   btnAddingCard,
   formAddingCard,
@@ -47,20 +45,17 @@ const cardList = new Section({
   })
 }, elementList)
 
-api.getUserInfo()
-  .then((userData) => {
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
     userInfo = userData;
     profileInfo.setUserInfo({
       name: userData.name,
       job: userData.about,
       avatar: userData.avatar
+    })
+    cardList.renderItems(cards.reverse())
     });
-    api.getInitialCards()
-      .then((elements) => {
-        cardList.renderItems(elements.reverse())
-      })
-      .catch((err) => console.log(err))
-  })
   .catch((err) => console.log(err))
 
 
@@ -75,12 +70,12 @@ const modalEditingAvatar = new ModalWithForm({
     })
       .then((data) => {
         btnEditingAvatar.src = data.avatar;
+        modalEditingAvatar.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        modalEditingProfile.renderLoading(false);
+        modalEditingAvatar.renderLoading(false);
       })
-    modalEditingAvatar.close();
   }
 }, modalAvatar)
 modalEditingAvatar.setEventListeners()
@@ -95,12 +90,12 @@ const modalAddingCard = new ModalWithForm({
     })
       .then((data) => {
         cardList.addItem(createCard(data));
+        modalAddingCard.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        modalEditingProfile.renderLoading(false);
+        modalAddingCard.renderLoading(false);
       })
-    modalAddingCard.close();
   }
 }, modalAddCard)
 modalAddingCard.setEventListeners();
@@ -120,12 +115,12 @@ const modalEditingProfile = new ModalWithForm({
           job: data.about,
           avatar: userInfo.avatar
         })
+        modalEditingProfile.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
         modalEditingProfile.renderLoading(false);
       })
-    modalEditingProfile.close();
   }
 }, modalEditProfile)
 modalEditingProfile.setEventListeners();
@@ -144,9 +139,8 @@ formValidatorAvatar.enableValidation();
 function openModalEditingProfile() {
   modalEditingProfile.open()
   formValidatorEditingProfile.resetValidation();
-  const { name, description } = profileInfo.getUserInfo();
-  inputProfileName.value = name;
-  inputProfileJob.value = description;
+  const data = profileInfo.getUserInfo();
+  modalEditingProfile.setInputValues(data);
 }
 
 function openModalAddingProfile() {

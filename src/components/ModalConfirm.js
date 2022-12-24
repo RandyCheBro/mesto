@@ -3,7 +3,7 @@ import { Modal } from "./Modal.js";
 export class ModalConfirm extends Modal {
   constructor(modalSelector) {
     super(modalSelector);
-    this._modalForm = this._modalSelector.querySelector(".popup__form");
+    this._modalForm = this._modal.querySelector(".popup__form");
   }
 
   open(handleFormSubmit) {

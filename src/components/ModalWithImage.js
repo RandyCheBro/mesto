@@ -4,8 +4,8 @@ export class ModalWithImage extends Modal {
 
   constructor(modalSelector) {
     super(modalSelector);
-    this._modalCardImage = this._modalSelector.querySelector(".popup__image");
-    this._modalCardName = this._modalSelector.querySelector(".popup__title-card");
+    this._modalCardImage = this._modal.querySelector(".popup__image");
+    this._modalCardName = this._modal.querySelector(".popup__title-card");
   }
 
   open({ name, link }) {
