@@ -1,6 +1,4 @@
 export const formEditingProfile = document.forms["edit-profile"];
-export const inputProfileName = document.querySelector(".popup__input_text_name");
-export const inputProfileJob = document.querySelector(".popup__input_text_job");
 export const btnEditingProfile = document.querySelector(".profile__edit-button");
 export const btnAddingCard = document.querySelector(".profile__add-button");
 export const formAddingCard = document.forms["add-card"];

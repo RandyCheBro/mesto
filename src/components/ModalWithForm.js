@@ -5,7 +5,7 @@ export class ModalWithForm extends Modal {
   constructor({ handleFormSubmit }, modalSelector) {
     super(modalSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._modalForm = this._modalSelector.querySelector(".popup__form");
+    this._modalForm = this._modal.querySelector(".popup__form");
     this._inputList = this._modalForm.querySelectorAll(".popup__input");
     this._modalSubmitBtn = this._modalForm.querySelector(".popup__submit");
     this._defaultBtnTextContent = this._modalSubmitBtn.textContent;
@@ -20,6 +20,16 @@ export class ModalWithForm extends Modal {
 
     return formValues;
   }
+
+setInputValues(data) {
+  const profileInputDataMap = {
+    "profile-name": ["name"],
+    "profile-job": ["description"]
+  }
+  this._inputList.forEach((input) => {
+    input.value = data[profileInputDataMap[input.name]];
+  })
+}
 
   setEventListeners() {
     super.setEventListeners();
