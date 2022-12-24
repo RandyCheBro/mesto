@@ -1,5 +1,5 @@
 export class Modal {
- 
+
   constructor(modalSelector) {
     this._modal = document.querySelector(modalSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
@@ -25,8 +25,8 @@ export class Modal {
 
   setEventListeners() {
     this._modal.addEventListener("mousedown", (evt) => {
-      if(evt.target.classList.contains("popup_is-opened") || 
-      evt.target.classList.contains("popup__close")) {
+      if (evt.target.classList.contains("popup_is-opened") ||
+        evt.target.classList.contains("popup__close")) {
         this.close();
       }
     })
