@@ -1,7 +1,7 @@
 import { Modal } from "./Modal.js";
 
 export class ModalWithForm extends Modal {
- 
+
   constructor({ handleFormSubmit }, modalSelector) {
     super(modalSelector);
     this._handleFormSubmit = handleFormSubmit;
@@ -46,7 +46,7 @@ setInputValues(data) {
   }
 
   renderLoading(isLoading, text) {
-    if(isLoading) {
+    if (isLoading) {
       this._modalSubmitBtn.textContent = text;
     } else {
       this._modalSubmitBtn.textContent = this._defaultBtnTextContent;
