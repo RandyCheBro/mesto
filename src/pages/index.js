@@ -55,7 +55,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       avatar: userData.avatar
     })
     cardList.renderItems(cards.reverse())
-    });
+    })
   .catch((err) => console.log(err))
 
 
