@@ -1,7 +1,7 @@
 export class Card {
 
-  constructor(userInfo, elementData, selector, openModalCard, onRemove, addLike, deleteLike) {
-    this._myId = userInfo._id
+  constructor(myId, elementData, selector, openModalCard, onRemove, addLike, deleteLike) {
+    this._myId = myId
     this._ownerId = elementData.owner._id;
     this.elementData = elementData;
     this._cardId = elementData._id;

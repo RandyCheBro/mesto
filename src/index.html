@@ -41,13 +41,13 @@
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form popup__form_aditing_profile" name="edit-profile" method="post" novalidate>
           <div class="popup__input-field">
-            <input name="profile-name" type="text" class="popup__input popup__input_text_name" placeholder="Имя" required minlength="2" maxlength="40" />
-            <span class="popup__input-error input-error-profile-name"></span>
+            <input name="name" type="text" class="popup__input popup__input_text_name" placeholder="Имя" required minlength="2" maxlength="40" />
+            <span class="popup__input-error input-error-name"></span>
           </div>
           <div class="popup__input-field">
-            <input name="profile-job" type="text" class="popup__input popup__input_text_job" placeholder="Профессия"
+            <input name="about" type="text" class="popup__input popup__input_text_job" placeholder="Профессия"
               required minlength="2" maxlength="200" />
-            <span class="popup__input-error input-error-profile-job"></span>
+            <span class="popup__input-error input-error-about"></span>
           </div>
           <button type="submit" class="popup__submit">
             Сохранить
@@ -103,8 +103,8 @@
       <h3 class="popup__title">Обновить аватар</h3>
       <form action="#" class="popup__form popup__form_avatar popup__form_type_less-top-margin" name="avatar" method="post" novalidate>
         <div class="popup__input-field">
-          <input name="avatar-link" type="url" class="popup__input popup__input_text_image-link" placeholder="Ссылка на картинку"required />
-            <span class="popup__input-error input-error-avatar-link"></span>
+          <input name="avatar" type="url" class="popup__input popup__input_text_image-link" placeholder="Ссылка на картинку"required />
+            <span class="popup__input-error input-error-avatar"></span>
         </div>
         <button type="submit" class="popup__submit">
           Сохранить

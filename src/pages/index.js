@@ -36,8 +36,7 @@ const api = new Api({
   }
 })
 
-let userInfo
-
+let myId
 
 const cardList = new Section({
   renderer: (elementData => {
@@ -48,14 +47,10 @@ const cardList = new Section({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
-    userInfo = userData;
-    profileInfo.setUserInfo({
-      name: userData.name,
-      job: userData.about,
-      avatar: userData.avatar
-    })
+    profileInfo.setUserInfo(userData);
+    myId = profileInfo.getUserId();
     cardList.renderItems(cards.reverse())
-    })
+  })
   .catch((err) => console.log(err))
 
 
@@ -66,10 +61,10 @@ const modalEditingAvatar = new ModalWithForm({
   handleFormSubmit: (formData) => {
     modalEditingAvatar.renderLoading(true, "Сохранение...")
     api.changeAvatar({
-      avatar: formData['avatar-link']
+      avatar: formData.avatar
     })
       .then((data) => {
-        btnEditingAvatar.src = data.avatar;
+        profileInfo.setUserInfo(data)
         modalEditingAvatar.close();
       })
       .catch((err) => console.log(err))
@@ -106,15 +101,11 @@ const modalEditingProfile = new ModalWithForm({
   handleFormSubmit: (formData) => {
     modalEditingProfile.renderLoading(true, "Сохранение...");
     api.changeData({
-      name: formData["profile-name"],
-      about: formData["profile-job"]
+      name: formData.name,
+      about: formData.about
     })
       .then((data) => {
-        profileInfo.setUserInfo({
-          name: data.name,
-          job: data.about,
-          avatar: userInfo.avatar
-        })
+        profileInfo.setUserInfo(data)
         modalEditingProfile.close();
       })
       .catch((err) => console.log(err))
@@ -162,15 +153,15 @@ modalConfirm.setEventListeners()
 
 
 function createCard(element) {
-  const card = new Card(userInfo, element, templateSelector, openModalCard,
+  const card = new Card(myId, element, templateSelector, openModalCard,
     (card) => {
       modalConfirm.open(
         () => {
           api.deleteCard(card._cardId).then(() => {
-            card.delete()
+            card.delete();
+            modalConfirm.close();
           })
             .catch((err) => console.log(err))
-          modalConfirm.close()
         }
       )
     },

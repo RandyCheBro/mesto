@@ -21,15 +21,11 @@ export class ModalWithForm extends Modal {
     return formValues;
   }
 
-setInputValues(data) {
-  const profileInputDataMap = {
-    "profile-name": ["name"],
-    "profile-job": ["description"]
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    })
   }
-  this._inputList.forEach((input) => {
-    input.value = data[profileInputDataMap[input.name]];
-  })
-}
 
   setEventListeners() {
     super.setEventListeners();
